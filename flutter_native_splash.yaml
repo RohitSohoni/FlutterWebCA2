@@ -1,0 +1,25 @@
+flutter_native_splash:
+
+  color: "#42a5f5"
+  image: assets/scan.png
+
+  color_dark: "#042a49"
+  image_dark: assets/scan-invert.png
+
+  android_12:
+    image: assets/scan.png
+    image_dark: assets/scan-invert.png
+
+  android: true
+  ios: true
+  web: true
+
+  android_gravity: center
+
+  ios_content_mode: center
+  
+  web_image_mode: center
+
+        WidgetsFlutterBinding.ensureInitialized();
+        SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom, SystemUiOverlay.top]);
+  fullscreen: true
