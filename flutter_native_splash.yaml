@@ -1,14 +1,8 @@
 flutter_native_splash:
-
-  color: "#42a5f5"
-  image: assets/scan.png
-
-  color_dark: "#042a49"
-  image_dark: assets/scan-invert.png
+  color: "#f59342"
+  background_image: scan.png
 
   android_12:
-    image: assets/scan.png
-    image_dark: assets/scan-invert.png
 
   android: true
   ios: true

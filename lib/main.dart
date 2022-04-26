@@ -12,18 +12,12 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String _scanBarcode = 'Nothing here yet :)';
+  String _scanBarcode = 'Scan something to get the result :)';
 
   @override
   void initState() {
     super.initState();
   }
-
-  // Future<void> startBarcodeScanStream() async {
-  //   FlutterBarcodeScanner.getBarcodeStreamReceiver(
-  //           '#ff6666', 'Cancel', true, ScanMode.BARCODE)!
-  //       .listen((barcode) => print(barcode));
-  // }
 
   Future<void> scanQR() async {
     String barcodeScanRes;
@@ -43,6 +37,9 @@ class _MyAppState extends State<MyApp> {
 
     setState(() {
       _scanBarcode = barcodeScanRes;
+      {
+        HapticFeedback.heavyImpact();
+      }
     });
   }
 
@@ -65,6 +62,9 @@ class _MyAppState extends State<MyApp> {
 
     setState(() {
       _scanBarcode = barcodeScanRes;
+      {
+        HapticFeedback.heavyImpact();
+      }
     });
   }
 
@@ -72,7 +72,9 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
-            appBar: AppBar(title: const Center(child: Text('MeeeeeSCAN'))),
+            appBar: AppBar(
+                backgroundColor: Colors.orangeAccent,
+                title: const Center(child: Text('MeeeeeSCAN'))),
             body: Builder(builder: (BuildContext context) {
               return Container(
                   alignment: Alignment.center,
@@ -82,14 +84,19 @@ class _MyAppState extends State<MyApp> {
                       children: <Widget>[
                         ElevatedButton(
                             onPressed: () => scanBarcodeNormal(),
+                            style: ElevatedButton.styleFrom(
+                                primary: Colors.orange),
                             child: Text('Barcode Scan')),
                         ElevatedButton(
-                            onPressed: () => scanQR(), child: Text('QR scan')),
-                        // ElevatedButton(
-                        //     onPressed: () => startBarcodeScanStream(),
-                        //     child: Text('Start barcode scan stream')),
-                        Text('Scan result : $_scanBarcode\n',
-                            style: TextStyle(fontSize: 20))
+                            onPressed: () => scanQR(),
+                            style: ElevatedButton.styleFrom(
+                                primary: Colors.orange),
+                            child: Text('QR scan')),
+                        Text(
+                          'Scan result : \n\n $_scanBarcode \n',
+                          style: TextStyle(fontSize: 25),
+                          textAlign: TextAlign.center,
+                        )
                       ]));
             })));
   }
